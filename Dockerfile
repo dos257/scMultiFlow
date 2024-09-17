@@ -151,7 +151,9 @@ RUN cp -R ./rocker-versioned2/scripts /rocker_scripts
 # https://www.kombitz.com/2024/06/20/how-to-install-r-4-4-1-on-ubuntu-22-04/
 
 RUN apt-get update && \
-    apt install -y libxt-dev
+    apt install -y \
+        libxt-dev \
+        libcairo2-dev
 
 # icu
 RUN wget https://github.com/unicode-org/icu/releases/download/release-73-2/icu4c-73_2-src.tgz && \
@@ -251,7 +253,14 @@ RUN apt-get update && \
         libfreetype6-dev \
         libpng-dev \
         libtiff5-dev \
-        libjpeg-dev
+        libjpeg-dev \
+        libhdf5-dev
+
+
+# https://github.com/hhoeflin/hdf5r/issues/112
+# hdf5r may find conda hdf5 instead of system one and will fail with
+# unable to load shared object '/usr/local/lib/R/site-library/00LOCK-hdf5r/00new/hdf5r/libs/hdf5r.so'
+RUN Rscript -e 'install.packages("hdf5r", configure.args="--with-hdf5=/usr/bin/h5cc")'
 
 
 COPY <<EOF install.packages.txt
