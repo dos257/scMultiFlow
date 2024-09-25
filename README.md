@@ -16,10 +16,10 @@ docker run --detach -p 18000:8000 -p 18787:8787 \
     --volume "$(realpath ..)/data":/data \
     --name scmultiflow-container bansalvi/scmultiflow
 ```
-If using old version of Ubunutu (below Ubuntu 22.04), to avoid errors use 
+If using an old version of Ubunutu (below Ubuntu 22.04), to avoid errors use: 
 
 ```
-docker pull TODO/scmultiflow
+docker pull bansalvi/scmultiflow
 docker run --detach -p 18000:8000 -p 18787:8787 \
     --volume "$(realpath ..)/data":/data \
     --name scmultiflow-container --security-opt seccomp=unconfined bansalvi/scmultiflow
