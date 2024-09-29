@@ -61,6 +61,7 @@ RUN /bin/sh -c set -x && \
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
+        patch \
         ca-certificates \
         curl \
         git \
