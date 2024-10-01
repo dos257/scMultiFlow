@@ -23,6 +23,7 @@ RUN /bin/sh -c set -x && \
         git \
         libglib2.0-0 \
         libsm6 \
+        libgsl-dev \
         libxcomposite1 \
         libxcursor1 \
         libxdamage1 \
@@ -440,6 +441,7 @@ RUN apt-get update && \
 
 RUN Rscript -e 'devtools::install_github("IRkernel/IRkernel")'
 RUN Rscript -e 'IRkernel::installspec(user = FALSE)'
+RUN Rscript -e 'devtools::install_github("satijalab/seurat-data")'
 
 # TOFIX: Not mounted yet
 #RUN chmod a+w /data
