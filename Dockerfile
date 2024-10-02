@@ -459,7 +459,7 @@ RUN Rscript -e 'devtools::install_github("satijalab/seurat-data")'
 
 RUN apt-get update && \
     apt-get install -y libcairo2-dev
-RUN Rscript -e 'remotes::install_github("mojaveazure/seurat-disk");'
+RUN Rscript -e "remotes::install_github('mojaveazure/seurat-disk');"
 RUN Rscript -e "BiocManager::install('Nebulosa')"
 RUN Rscript -e 'install.packages("ggrastr")'
 
