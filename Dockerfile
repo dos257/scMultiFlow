@@ -279,6 +279,7 @@ extrafont
 ggrastr
 harmony
 hdf5r
+arrow
 magmaR
 mixtools
 quarto
