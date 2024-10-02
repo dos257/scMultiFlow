@@ -4,7 +4,7 @@ build_nocache:
 
 build:
 	docker rm scmultiflow-container -f
-	docker build --tag scmultiflow .
+	docker build --tag scmultiflow . 2>&1 | tee build.log
 
 run:
 	docker run --detach -p 18000:8000 -p 18787:8787 \
