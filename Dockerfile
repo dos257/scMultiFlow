@@ -279,6 +279,7 @@ extrafont
 ggrastr
 harmony
 hdf5r
+arrow
 magmaR
 mixtools
 quarto
@@ -372,8 +373,21 @@ RUN Rscript -e "remotes::install_github('neurogenomics/MAGMA_Celltyping')"
 RUN wget https://vu.data.surfsara.nl/index.php/s/zkKbNeNOZAhFXZB/download -O magma_v1.10.zip
 # TODO: unpack, copy to path
 
+# packages and dependencies for SCpubr package
+RUN Rscript -e "BiocManager::install('clusterProfiler')"
+RUN Rscript -e "BiocManager::install('AUCell')"
+RUN Rscript -e "BiocManager::install('enrichplot')"
+RUN Rscript -e "BiocManager::install('decoupleR')"
+RUN Rscript -e "BiocManager::install('Nebulosa')"
 
-
+RUN Rscript -e 'install.packages("ggdist")'
+RUN Rscript -e 'install.packages("ggExtra")'
+RUN Rscript -e 'install.packages("ggrastr")'
+RUN Rscript -e 'install.packages("svglite")'
+RUN Rscript -e 'install.packages("ggalluvial")'
+RUN Rscript -e 'install.packages("ggnewscale")'
+RUN Rscript -e "remotes::install_github('saezlab/liana')"
+RUN Rscript -e 'install.packages("SCpubr")'
 
 # ------------------------------------------------------------------------------
 # scROCK install
